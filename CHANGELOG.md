@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.3] - 2025-10-11
+
+### Added
+- Optional proxy configuration for both single-proxy and per-scheme setups via `GPlayScraper` and `Config`
+
 ## [1.0.2] - 2025-10-11
 
 ### Changed

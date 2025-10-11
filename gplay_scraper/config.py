@@ -1,6 +1,6 @@
 """Configuration settings for GPlay Scraper."""
 
-from typing import Dict, Any
+from typing import Any, Dict, Optional
 
 
 class Config:
@@ -11,6 +11,8 @@ class Config:
     DEFAULT_RETRIES = 3
     RATE_LIMIT_DELAY = 1.0
     DEFAULT_IMPERSONATE = "chrome"
+    DEFAULT_PROXY: Optional[str] = None
+    DEFAULT_PROXIES: Optional[Dict[str, str]] = None
 
     # User agent for HTTP client
     DEFAULT_USER_AGENT = (
@@ -41,4 +43,6 @@ class Config:
             "timeout": cls.DEFAULT_TIMEOUT,
             "headers": cls.get_headers(),
             "impersonate": cls.DEFAULT_IMPERSONATE,
+            "proxy": cls.DEFAULT_PROXY,
+            "proxies": cls.DEFAULT_PROXIES,
         }
