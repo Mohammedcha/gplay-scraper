@@ -171,7 +171,7 @@ For advanced users who need full control:
 .. code-block:: python
 
    from gplay_scraper import Config
-   import requests
+   from curl_cffi import requests as curl_requests
 
    # Get request configuration
    config = Config.get_request_config()
@@ -179,9 +179,10 @@ For advanced users who need full control:
    # Modify configuration
    config['timeout'] = 60
    config['headers']['Accept-Language'] = 'en-US,en;q=0.9'
+   config['impersonate'] = 'chrome110'  # Use a specific browser fingerprint
    
-   # Use with requests directly (advanced usage)
-   response = requests.get('https://example.com', **config)
+   # Use with curl_cffi's requests-compatible client (advanced usage)
+   response = curl_requests.get('https://example.com', **config)
 
 Logging Configuration
 ~~~~~~~~~~~~~~~~~~~~~

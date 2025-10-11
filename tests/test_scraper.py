@@ -28,7 +28,7 @@ class TestGPlayScraper(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.scraper.analyze("invalid@app#id")
 
-    @patch('gplay_scraper.core.scraper.requests.get')
+    @patch('gplay_scraper.core.scraper.curl_requests.get')
     def test_network_timeout(self, mock_get):
         """Test network timeout handling."""
         mock_get.side_effect = Exception("Timeout")

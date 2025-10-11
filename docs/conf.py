@@ -75,5 +75,5 @@ autodoc_default_options = {
 # Intersphinx mapping
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3', None),
-    'requests': ('https://requests.readthedocs.io/en/latest/', None),
+    'curl_cffi': ('https://curl-cffi.readthedocs.io/en/latest/', None),
 }

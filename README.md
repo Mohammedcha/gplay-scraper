@@ -33,7 +33,7 @@
 ## 📋 Requirements
 
 - Python 3.7+
-- requests
+- curl-cffi (for browser impersonation support)
 - beautifulsoup4 (optional, for enhanced parsing)
 
 ## 🚀 Installation
