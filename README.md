@@ -13,14 +13,13 @@
 
 **GPlay Scraper** is a powerful Python Google Play scraper library for extracting comprehensive app data from the Google Play Store. Scrape Google Play Store apps to get ratings, install counts, reviews, ASO metrics, developer information, and 65+ data fields with this easy-to-use Google Play Store scraper.
 
-## 🆕 **What's New in v1.0.1** 
+## 🆕 **What's New in v1.0.3** 
 
-**✅ Fixed Major Issues:**
-- **Paid App Support** - No more JSON parsing errors for paid apps
-- **Reviews Extraction** - Successfully extracts user reviews for all app types
-- **Enhanced Parser** - Handles malformed Play Store data with bracket-matching algorithm
-- **Organized Output** - Logical field grouping for better data structure
-- **Original Price Field** - Added support for tracking sale prices
+**✅ Latest Updates:**
+- **Proxy configuration** - Configure single or per-scheme proxies when initializing `GPlayScraper` or via `Config` defaults
+- **curl-cffi HTTP client** - Browser impersonation remains the default for more reliable scraping
+- **Centralized network settings** - Manage timeout, headers, impersonation, and proxy defaults through `Config`
+- **Documentation refresh** - Updated guides covering the new proxy options
 
 **Key Features:**
 - **Complete Google Play Store data extraction** - 65+ fields per app
@@ -33,7 +32,7 @@
 ## 📋 Requirements
 
 - Python 3.7+
-- requests
+- curl-cffi (for browser impersonation support)
 - beautifulsoup4 (optional, for enhanced parsing)
 
 ## 🚀 Installation
@@ -58,6 +57,20 @@ scraper = GPlayScraper()
 app_id = "com.hubolabs.hubo"  # purp - Make new friends
 title = scraper.get_field(app_id, "title")
 print(f"App Title: {title}")
+```
+
+## 🌐 Proxy Support
+
+```python
+from gplay_scraper import GPlayScraper
+
+# Single proxy for every request
+scraper = GPlayScraper(proxy="http://127.0.0.1:8080")
+
+# Update to per-scheme proxies when needed
+scraper.scraper.set_proxy(
+    proxies={"https": "http://secure-proxy.local:8080"}
+)
 ```
 
 ## 🎯 Available Functions

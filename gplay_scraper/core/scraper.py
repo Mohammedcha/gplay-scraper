@@ -1,9 +1,12 @@
 import re
 import json
-import requests
 import time
-from typing import List, Dict, Tuple
 import logging
+from typing import List, Dict, Tuple, Optional
+
+from curl_cffi import requests as curl_requests
+from curl_cffi.requests import exceptions as curl_exceptions
+
 from gplay_scraper.utils.helpers import clean_json_string
 from gplay_scraper.config import Config
 
@@ -17,15 +20,26 @@ class PlayStoreScraper:
     Google Play Store app pages.
     """
     
-    def __init__(self, rate_limit_delay: float = None):
+    def __init__(
+        self,
+        rate_limit_delay: float = None,
+        proxy: Optional[str] = None,
+        proxies: Optional[Dict[str, str]] = None,
+    ):
         """Initialize scraper with browser-like headers and rate limiting.
         
         Args:
             rate_limit_delay (float): Minimum seconds between requests (uses Config default if None)
+            proxy (str): Optional single proxy URL for all HTTP requests
+            proxies (Dict[str, str]): Optional per-scheme proxy mapping
         """
         # Use configuration for headers and settings
-        self.headers = Config.get_headers()
-        self.timeout = Config.DEFAULT_TIMEOUT
+        request_config = Config.get_request_config()
+        self.headers = request_config["headers"]
+        self.timeout = request_config["timeout"]
+        self.impersonate = request_config.get("impersonate", Config.DEFAULT_IMPERSONATE)
+        self.proxy = proxy if proxy is not None else request_config.get("proxy")
+        self.proxies = proxies if proxies is not None else request_config.get("proxies")
         
         # Rate limiting configuration
         self.rate_limit_delay = rate_limit_delay or Config.RATE_LIMIT_DELAY
@@ -42,7 +56,7 @@ class PlayStoreScraper:
             
         Raises:
             ValueError: If app_id is invalid or malformed
-            requests.RequestException: If HTTP request fails
+            curl_cffi.requests.exceptions.RequestException: If HTTP request fails
         """
         # Validate input parameters
         if not app_id or not isinstance(app_id, str):
@@ -57,16 +71,27 @@ class PlayStoreScraper:
         
         url = f"https://play.google.com/store/apps/details?id={app_id}&hl=en&gl=US"
         try:
-            resp = requests.get(url, headers=self.headers, timeout=self.timeout)
+            request_kwargs = {
+                "headers": self.headers,
+                "timeout": self.timeout,
+                "impersonate": self.impersonate,
+                "default_headers": False,
+            }
+            if self.proxy:
+                request_kwargs["proxy"] = self.proxy
+            if self.proxies:
+                request_kwargs["proxies"] = self.proxies
+
+            resp = curl_requests.get(url, **request_kwargs)
             resp.raise_for_status()
             return resp.text
-        except requests.Timeout:
+        except curl_exceptions.Timeout:
             logger.error(f"Timeout while fetching Play Store page for {app_id}")
             raise
-        except requests.ConnectionError:
+        except curl_exceptions.ConnectionError:
             logger.error(f"Connection error while fetching Play Store page for {app_id}")
             raise
-        except requests.RequestException as e:
+        except curl_exceptions.RequestException as e:
             logger.error(f"Failed to fetch Play Store page for {app_id}: {e}")
             raise
 
@@ -195,6 +220,15 @@ class PlayStoreScraper:
         except (IndexError, TypeError):
             # Return None if data structure is unexpected
             return None
+
+    def set_proxy(
+        self,
+        proxy: Optional[str] = None,
+        proxies: Optional[Dict[str, str]] = None,
+    ):
+        """Update proxy settings for subsequent HTTP requests."""
+        self.proxy = proxy
+        self.proxies = proxies
     
     def _rate_limit(self):
         """Implement rate limiting to avoid overwhelming the server."""

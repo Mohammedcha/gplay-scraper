@@ -1,5 +1,5 @@
 import json
-from typing import Any, List, Dict
+from typing import Any, List, Dict, Optional
 from datetime import datetime, timezone
 import logging
 
@@ -27,9 +27,18 @@ class GPlayScraper:
         >>> title = scraper.get_field("com.hubolabs.hubo", "title")
     """
     
-    def __init__(self):
-        """Initialize the scraper with required components."""
-        self.scraper = PlayStoreScraper()
+    def __init__(
+        self,
+        proxy: Optional[str] = None,
+        proxies: Optional[Dict[str, str]] = None,
+    ):
+        """Initialize the scraper with required components.
+
+        Args:
+            proxy (str, optional): Single proxy URL for all HTTP requests.
+            proxies (Dict[str, str], optional): Mapping of scheme to proxy URL.
+        """
+        self.scraper = PlayStoreScraper(proxy=proxy, proxies=proxies)
         self.aso_analyzer = AsoAnalyzer()
         self._cache = {}  # Cache for analyzed app data
 

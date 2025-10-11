@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.3] - 2025-10-11
+
+### Added
+- Optional proxy configuration for both single-proxy and per-scheme setups via `GPlayScraper` and `Config`
+
+## [1.0.2] - 2025-10-11
+
+### Changed
+- Swapped the HTTP layer to `curl-cffi` with Play Store browser impersonation enabled by default
+- Centralized networking defaults (headers, timeout, impersonation) through `Config.get_request_config`
+- Updated documentation and tests to reflect the new HTTP client
+
 ## [1.0.1] - 2025-10-07
 
 ### Added

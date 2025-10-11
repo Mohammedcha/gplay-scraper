@@ -5,7 +5,7 @@ Requirements
 ------------
 
 - Python 3.7+
-- requests
+- curl-cffi
 - beautifulsoup4 (optional, for enhanced parsing)
 
 Install from PyPI

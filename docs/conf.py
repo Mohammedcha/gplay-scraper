@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.abspath('..'))
 project = 'GPlay Scraper'
 copyright = '2025, Mohammed Cha'
 author = 'Mohammed Cha'
-release = '1.0.1'
+release = '1.0.3'
 
 # Extensions
 extensions = [
@@ -75,5 +75,5 @@ autodoc_default_options = {
 # Intersphinx mapping
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3', None),
-    'requests': ('https://requests.readthedocs.io/en/latest/', None),
+    'curl_cffi': ('https://curl-cffi.readthedocs.io/en/latest/', None),
 }

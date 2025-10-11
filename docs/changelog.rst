@@ -3,6 +3,22 @@ Changelog
 
 All notable changes to this project will be documented in this file.
 
+Version 1.0.3 (2025-10-11)
+---------------------------
+
+**Added**
+
+- Optional proxy configuration for single and per-scheme setups via ``GPlayScraper`` and ``Config``
+
+Version 1.0.2 (2025-10-11)
+---------------------------
+
+**Changed**
+
+- Swapped the HTTP stack to ``curl-cffi`` with Play Store browser impersonation enabled by default
+- Centralized timeout, headers, and impersonation defaults via ``Config.get_request_config``
+- Refreshed documentation and tests to highlight the new networking behavior
+
 Version 1.0.1 (2025-10-07)
 ---------------------------
 

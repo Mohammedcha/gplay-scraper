@@ -1,4 +1,4 @@
-requests>=2.25.0
+curl-cffi==0.13.0
 pytest>=6.0.0
 
 # Documentation (optional)

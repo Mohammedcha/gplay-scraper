@@ -56,6 +56,27 @@ Configure delays between requests:
    # Disable rate limiting (not recommended)
    scraper.scraper.rate_limit_delay = 0
 
+Proxy Settings
+~~~~~~~~~~~~~~
+
+Route traffic through proxies when required:
+
+.. code-block:: python
+
+   from gplay_scraper import GPlayScraper, Config
+
+   # Single proxy for every request
+   scraper = GPlayScraper(proxy="http://127.0.0.1:8080")
+
+   # Update later with per-scheme proxies
+   scraper.scraper.set_proxy(
+       proxies={"https": "http://secure-proxy.local:8080"}
+   )
+
+   # Configure defaults globally (optional)
+   Config.DEFAULT_PROXY = "http://127.0.0.1:8080"
+   Config.DEFAULT_PROXIES = {"https": "http://secure-proxy.local:8080"}
+
 User Agent
 ~~~~~~~~~~
 
@@ -171,7 +192,7 @@ For advanced users who need full control:
 .. code-block:: python
 
    from gplay_scraper import Config
-   import requests
+   from curl_cffi import requests as curl_requests
 
    # Get request configuration
    config = Config.get_request_config()
@@ -179,9 +200,12 @@ For advanced users who need full control:
    # Modify configuration
    config['timeout'] = 60
    config['headers']['Accept-Language'] = 'en-US,en;q=0.9'
+   config['impersonate'] = 'chrome110'  # Use a specific browser fingerprint
+   config['proxy'] = 'http://127.0.0.1:8080'
+   config['proxies'] = {'https': 'http://secure-proxy.local:8080'}
    
-   # Use with requests directly (advanced usage)
-   response = requests.get('https://example.com', **config)
+   # Use with curl_cffi's requests-compatible client (advanced usage)
+   response = curl_requests.get('https://example.com', **config)
 
 Logging Configuration
 ~~~~~~~~~~~~~~~~~~~~~
