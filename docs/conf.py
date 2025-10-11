@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.abspath('..'))
 project = 'GPlay Scraper'
 copyright = '2025, Mohammed Cha'
 author = 'Mohammed Cha'
-release = '1.0.1'
+release = '1.0.2'
 
 # Extensions
 extensions = [

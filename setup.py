@@ -8,7 +8,7 @@ with open("requirements.txt", "r", encoding="utf-8") as fh:
 
 setup(
     name="gplay-scraper",
-    version="1.0.1",
+    version="1.0.2",
     description="Powerful Python Google Play scraper library for extracting comprehensive app data from Google Play Store - ratings, installs, reviews, ASO metrics, and 65+ fields.",
     long_description=long_description,
     long_description_content_type="text/markdown",
