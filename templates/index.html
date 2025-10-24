@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Google Play Apps</title>
+</head>
+<body>
+    <h1>Top Google Play Apps</h1>
+    <p><a href="/developer">View Developer Portfolio</a></p>
+    <form method="get">
+        <label for="category">Category:</label>
+        <select name="category" id="category">
+            {% for category in categories %}
+            <option value="{{ category }}" {% if category == selected_category %}selected{% endif %}>{{ category.replace('_', ' ').title() }}</option>
+            {% endfor %}
+        </select>
+        <label for="country">Country:</label>
+        <select name="country" id="country">
+            {% for code, name in countries.items() %}
+            <option value="{{ code }}" {% if code == selected_country %}selected{% endif %}>{{ name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Developer</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for app in apps %}
+            <tr>
+                <td>{{ app.title }}</td>
+                <td>{{ app.developer }}</td>
+                <td>{{ app.score }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

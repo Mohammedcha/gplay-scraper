@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Portfolio</title>
+</head>
+<body>
+    <h1>Developer Portfolio</h1>
+    <p>Enter a numeric developer ID to see their apps. For example, Google LLC's ID is 5700313618786177705.</p>
+    <form method="post">
+        <label for="dev_id">Developer ID:</label>
+        <input type="text" name="dev_id" id="dev_id" value="{{ dev_id or '5700313618786177705' }}">
+        <button type="submit">Search</button>
+    </form>
+    {% if searched %}
+        {% if apps %}
+        <h2>Apps for {{ dev_id }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Installs</th>
+                    <th>Score</th>
+                    <th>Last Updated</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for app in apps %}
+                <tr>
+                    <td>{{ app.title }}</td>
+                    <td>{{ app.installs }}</td>
+                    <td>{{ app.score }}</td>
+                    <td>{{ app.updated }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No apps found for this developer ID.</p>
+        {% endif %}
+    {% endif %}
+    <p><a href="/">Back to Top Apps</a></p>
+</body>
+</html>
