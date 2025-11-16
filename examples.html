@@ -1,0 +1,784 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Examples &#8212; GPlay Scraper</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=f6a7b546"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=30646c52"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples';</script>
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="App Methods" href="api/app.html" />
+    <link rel="prev" title="Quick Start Guide" href="quickstart.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search documentation..."
+         aria-label="Search documentation..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">GPlay Scraper</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/mohammedcha/gplay-scraper" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/gplay-scraper/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    GPlay Scraper Documentation
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Examples</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="api/app.html">App Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/search.html">Search Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/reviews.html">Reviews Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/developer.html">Developer Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/similar.html">Similar Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/list.html">List Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/suggest.html">Suggest Methods</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="error_handling.html">Error Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fields.html">Field Reference</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mohammedcha/gplay-scraper" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mohammedcha/gplay-scraper/issues/new?title=Issue%20on%20page%20%2Fexamples.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/examples.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Examples</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-analytics-dashboard">App Analytics Dashboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#market-research">Market Research</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#competitor-monitoring">Competitor Monitoring</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-sentiment-analysis">Review Sentiment Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#top-charts-tracking">Top Charts Tracking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#developer-portfolio-overview">Developer Portfolio Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-data-collection">Batch Data Collection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-language-content">Multi-Language Content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-discovery">Trend Discovery</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h1>
+<p>Practical examples of using GPlay Scraper for common tasks.</p>
+<section id="app-analytics-dashboard">
+<h2>App Analytics Dashboard<a class="headerlink" href="#app-analytics-dashboard" title="Link to this heading">#</a></h2>
+<p>Track key metrics for your app.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">gplay_scraper</span><span class="w"> </span><span class="kn">import</span> <span class="n">GPlayScraper</span>
+
+<span class="n">scraper</span> <span class="o">=</span> <span class="n">GPlayScraper</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">app_analyze</span><span class="p">(</span><span class="s1">&#39;com.myapp&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== App Analytics Dashboard ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;App: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Developer: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;developer&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rating: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/5 (</span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;ratings&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> ratings)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Install Metrics:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Total Installs: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;realInstalls&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Daily Installs: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;dailyInstalls&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Monthly Installs: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;monthlyInstalls&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  App Age: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;appAgeDays&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> days&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Rating Distribution:&quot;</span><span class="p">)</span>
+<span class="n">hist</span> <span class="o">=</span> <span class="n">app</span><span class="p">[</span><span class="s1">&#39;histogram&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">hist</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">★: </span><span class="si">{</span><span class="n">count</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="market-research">
+<h2>Market Research<a class="headerlink" href="#market-research" title="Link to this heading">#</a></h2>
+<p>Analyze a market segment.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scraper</span> <span class="o">=</span> <span class="n">GPlayScraper</span><span class="p">()</span>
+
+<span class="c1"># Search for fitness apps</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">search_analyze</span><span class="p">(</span><span class="s1">&#39;fitness tracker&#39;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Filter by rating</span>
+<span class="n">high_rated</span> <span class="o">=</span> <span class="p">[</span><span class="n">app</span> <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">results</span> <span class="k">if</span> <span class="n">app</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">4.5</span><span class="p">]</span>
+<span class="n">free_apps</span> <span class="o">=</span> <span class="p">[</span><span class="n">app</span> <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">high_rated</span> <span class="k">if</span> <span class="n">app</span><span class="p">[</span><span class="s1">&#39;free&#39;</span><span class="p">]]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total fitness tracker apps: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;High-rated (4.5+): </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">high_rated</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;High-rated &amp; Free: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">free_apps</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Top 5 Free High-Rated Apps:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">free_apps</span><span class="p">[:</span><span class="mi">5</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/5&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="competitor-monitoring">
+<h2>Competitor Monitoring<a class="headerlink" href="#competitor-monitoring" title="Link to this heading">#</a></h2>
+<p>Track your competitors.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scraper</span> <span class="o">=</span> <span class="n">GPlayScraper</span><span class="p">()</span>
+
+<span class="n">competitors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;com.competitor1&#39;</span><span class="p">,</span> <span class="s1">&#39;com.competitor2&#39;</span><span class="p">,</span> <span class="s1">&#39;com.competitor3&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Competitor Analysis&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">app_id</span> <span class="ow">in</span> <span class="n">competitors</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">app_analyze</span><span class="p">(</span><span class="n">app_id</span><span class="p">)</span>
+    <span class="n">reviews</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">reviews_analyze</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;NEWEST&#39;</span><span class="p">)</span>
+
+    <span class="n">avg_recent_rating</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">reviews</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">reviews</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Overall Rating: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/5&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Recent Rating: </span><span class="si">{</span><span class="n">avg_recent_rating</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">/5&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Daily Installs: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;dailyInstalls&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Total Installs: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;realInstalls&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="review-sentiment-analysis">
+<h2>Review Sentiment Analysis<a class="headerlink" href="#review-sentiment-analysis" title="Link to this heading">#</a></h2>
+<p>Analyze user feedback.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scraper</span> <span class="o">=</span> <span class="n">GPlayScraper</span><span class="p">()</span>
+
+<span class="n">reviews</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">reviews_analyze</span><span class="p">(</span><span class="s1">&#39;com.myapp&#39;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+
+<span class="c1"># Categorize by rating</span>
+<span class="n">positive</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">reviews</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">neutral</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">reviews</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">negative</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">reviews</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Review Sentiment Analysis&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total Reviews: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">reviews</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Positive (4-5★): </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">positive</span><span class="p">)</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">positive</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">reviews</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Neutral (3★): </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">neutral</span><span class="p">)</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">neutral</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">reviews</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Negative (1-2★): </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">negative</span><span class="p">)</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">negative</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">reviews</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Show recent negative reviews</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Recent Negative Reviews:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">review</span> <span class="ow">in</span> <span class="n">negative</span><span class="p">[:</span><span class="mi">5</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">review</span><span class="p">[</span><span class="s1">&#39;userName&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">review</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/5&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="n">review</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">][:</span><span class="mi">100</span><span class="p">]</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="top-charts-tracking">
+<h2>Top Charts Tracking<a class="headerlink" href="#top-charts-tracking" title="Link to this heading">#</a></h2>
+<p>Monitor top charts positions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scraper</span> <span class="o">=</span> <span class="n">GPlayScraper</span><span class="p">()</span>
+
+<span class="c1"># Track top free games</span>
+<span class="n">top_games</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">list_analyze</span><span class="p">(</span><span class="s1">&#39;TOP_FREE&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s1">&#39;GAME&#39;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># Find your app&#39;s position</span>
+<span class="n">my_app_id</span> <span class="o">=</span> <span class="s1">&#39;com.mygame&#39;</span>
+<span class="n">position</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">app</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">top_games</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                 <span class="k">if</span> <span class="n">app</span><span class="p">[</span><span class="s1">&#39;appId&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">my_app_id</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">position</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Your game is ranked #</span><span class="si">{</span><span class="n">position</span><span class="si">}</span><span class="s2"> in top free games!&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Your game is not in top 50&quot;</span><span class="p">)</span>
+
+<span class="c1"># Show top 10</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Top 10 Free Games:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">app</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">top_games</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/5&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="developer-portfolio-overview">
+<h2>Developer Portfolio Overview<a class="headerlink" href="#developer-portfolio-overview" title="Link to this heading">#</a></h2>
+<p>Analyze a developer’s entire portfolio.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scraper</span> <span class="o">=</span> <span class="n">GPlayScraper</span><span class="p">()</span>
+
+<span class="n">apps</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">developer_analyze</span><span class="p">(</span><span class="s1">&#39;Google LLC&#39;</span><span class="p">)</span>
+
+<span class="c1"># Calculate metrics</span>
+<span class="n">avg_rating</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">apps</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">apps</span><span class="p">)</span>
+<span class="n">free_count</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">apps</span> <span class="k">if</span> <span class="n">app</span><span class="p">[</span><span class="s1">&#39;free&#39;</span><span class="p">])</span>
+<span class="n">high_rated</span> <span class="o">=</span> <span class="p">[</span><span class="n">app</span> <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">apps</span> <span class="k">if</span> <span class="n">app</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">4.5</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Developer: Google LLC&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total Apps: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">apps</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average Rating: </span><span class="si">{</span><span class="n">avg_rating</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">/5&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Free Apps: </span><span class="si">{</span><span class="n">free_count</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">apps</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;High-Rated Apps (4.5+): </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">high_rated</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Best rated apps</span>
+<span class="n">sorted_apps</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">apps</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Top 5 Highest Rated:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">sorted_apps</span><span class="p">[:</span><span class="mi">5</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/5&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="batch-data-collection">
+<h2>Batch Data Collection<a class="headerlink" href="#batch-data-collection" title="Link to this heading">#</a></h2>
+<p>Collect data for multiple apps efficiently.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gplay_scraper</span><span class="w"> </span><span class="kn">import</span> <span class="n">GPlayScraper</span>
+
+<span class="n">scraper</span> <span class="o">=</span> <span class="n">GPlayScraper</span><span class="p">()</span>
+
+<span class="n">app_ids</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;com.whatsapp&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;org.telegram.messenger&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;org.thoughtcrime.securesms&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;com.discord&#39;</span>
+<span class="p">]</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">app_id</span> <span class="ow">in</span> <span class="n">app_ids</span><span class="p">:</span>
+    <span class="c1"># Get only the fields you need</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;developer&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">,</span> <span class="s1">&#39;realInstalls&#39;</span><span class="p">,</span> <span class="s1">&#39;dailyInstalls&#39;</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">app_get_fields</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="n">fields</span><span class="p">)</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Save to JSON</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;messaging_apps.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Collected data for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="si">}</span><span class="s2"> apps&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="multi-language-content">
+<h2>Multi-Language Content<a class="headerlink" href="#multi-language-content" title="Link to this heading">#</a></h2>
+<p>Get localized app information.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scraper</span> <span class="o">=</span> <span class="n">GPlayScraper</span><span class="p">()</span>
+
+<span class="n">languages</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;en&#39;</span><span class="p">:</span> <span class="s1">&#39;English&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;es&#39;</span><span class="p">:</span> <span class="s1">&#39;Spanish&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;fr&#39;</span><span class="p">:</span> <span class="s1">&#39;French&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;de&#39;</span><span class="p">:</span> <span class="s1">&#39;German&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ja&#39;</span><span class="p">:</span> <span class="s1">&#39;Japanese&#39;</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">lang_code</span><span class="p">,</span> <span class="n">lang_name</span> <span class="ow">in</span> <span class="n">languages</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">app_analyze</span><span class="p">(</span><span class="s1">&#39;com.whatsapp&#39;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="n">lang_code</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">lang_name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">lang_code</span><span class="si">}</span><span class="s2">):&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Title: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Summary: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="trend-discovery">
+<h2>Trend Discovery<a class="headerlink" href="#trend-discovery" title="Link to this heading">#</a></h2>
+<p>Discover trending apps in a category.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scraper</span> <span class="o">=</span> <span class="n">GPlayScraper</span><span class="p">()</span>
+
+<span class="c1"># Get top free apps</span>
+<span class="n">top_free</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">list_analyze</span><span class="p">(</span><span class="s1">&#39;TOP_FREE&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s1">&#39;PRODUCTIVITY&#39;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Filter for new apps (less than 180 days old)</span>
+<span class="n">new_apps</span> <span class="o">=</span> <span class="p">[</span><span class="n">app</span> <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">top_free</span> <span class="k">if</span> <span class="s1">&#39;New&#39;</span> <span class="ow">in</span> <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)]</span>
+
+<span class="c1"># Get apps with high install velocity</span>
+<span class="n">trending</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">top_free</span><span class="p">[:</span><span class="mi">20</span><span class="p">]:</span>
+    <span class="n">full_data</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">app_analyze</span><span class="p">(</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;appId&#39;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">full_data</span><span class="p">[</span><span class="s1">&#39;dailyInstalls&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10000</span><span class="p">:</span>
+        <span class="n">trending</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">full_data</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trending Productivity Apps:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">trending</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Daily Installs: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;dailyInstalls&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Rating: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/5&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="quickstart.html"><span class="doc">Quick Start Guide</span></a> - Basic usage guide</p></li>
+<li><p><a class="reference internal" href="api/app.html"><span class="doc">App Methods</span></a> - Complete API reference</p></li>
+<li><p><a class="reference internal" href="configuration.html"><span class="doc">Configuration</span></a> - Configuration options</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="quickstart.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Quick Start Guide</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="api/app.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">App Methods</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-analytics-dashboard">App Analytics Dashboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#market-research">Market Research</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#competitor-monitoring">Competitor Monitoring</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-sentiment-analysis">Review Sentiment Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#top-charts-tracking">Top Charts Tracking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#developer-portfolio-overview">Developer Portfolio Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-data-collection">Batch Data Collection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-language-content">Multi-Language Content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-discovery">Trend Discovery</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By GPlay Scraper
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, GPlay Scraper.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>Built with ❤️ using Sphinx Book Theme</p>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

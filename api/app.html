@@ -1,0 +1,892 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>App Methods &#8212; GPlay Scraper</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=f6a7b546"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=30646c52"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/app';</script>
+    <link rel="icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Search Methods" href="search.html" />
+    <link rel="prev" title="Examples" href="../examples.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search documentation..."
+         aria-label="Search documentation..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">GPlay Scraper</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/mohammedcha/gplay-scraper" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/gplay-scraper/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    GPlay Scraper Documentation
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">App Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search.html">Search Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reviews.html">Reviews Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Developer Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="similar.html">Similar Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list.html">List Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="suggest.html">Suggest Methods</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../error_handling.html">Error Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fields.html">Field Reference</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mohammedcha/gplay-scraper" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mohammedcha/gplay-scraper/issues/new?title=Issue%20on%20page%20%2Fapi/app.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/api/app.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>App Methods</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#available-methods">Available Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-analyze">app_analyze()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-get-field">app_get_field()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-get-fields">app_get_fields()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-print-field">app_print_field()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-print-fields">app_print_fields()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-print-all">app_print_all()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#available-fields">Available Fields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-use-cases">Common Use Cases</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#app-analytics">App Analytics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#competitor-comparison">Competitor Comparison</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#market-research">Market Research</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="app-methods">
+<h1>App Methods<a class="headerlink" href="#app-methods" title="Link to this heading">#</a></h1>
+<p>Extract comprehensive app data with 57 fields including install analytics, ratings, pricing, and developer information.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>The App methods provide access to detailed information about any Google Play Store app. All methods return data in JSON format with 57 fields.</p>
+</section>
+<section id="available-methods">
+<h2>Available Methods<a class="headerlink" href="#available-methods" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">app_analyze()</span></code> - Get all 57 fields</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app_get_field()</span></code> - Get single field value</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app_get_fields()</span></code> - Get multiple field values</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app_print_field()</span></code> - Print single field</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app_print_fields()</span></code> - Print multiple fields</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app_print_all()</span></code> - Print all data as JSON</p></li>
+</ul>
+</section>
+<section id="app-analyze">
+<h2>app_analyze()<a class="headerlink" href="#app-analyze" title="Link to this heading">#</a></h2>
+<p>Get complete app data with all 57 fields.</p>
+<p><strong>Signature:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">app_analyze</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">,</span> <span class="n">country</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">assets</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">app_id</span></code> (str, required) - Google Play app ID (e.g., ‘com.whatsapp’)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code> (str, optional) - Language code (default: ‘en’)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">country</span></code> (str, optional) - Country code (default: ‘’)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">assets</span></code> (str, optional) - Image size: ‘SMALL’, ‘MEDIUM’, ‘LARGE’, ‘ORIGINAL’</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>Dictionary with 57 fields</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">gplay_scraper</span><span class="w"> </span><span class="kn">import</span> <span class="n">GPlayScraper</span>
+
+<span class="n">scraper</span> <span class="o">=</span> <span class="n">GPlayScraper</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">app_analyze</span><span class="p">(</span><span class="s1">&#39;com.whatsapp&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">])</span>              <span class="c1"># WhatsApp Messenger</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;developer&#39;</span><span class="p">])</span>          <span class="c1"># WhatsApp LLC</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">])</span>              <span class="c1"># 4.2189474</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;realInstalls&#39;</span><span class="p">])</span>       <span class="c1"># 10931553905</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;dailyInstalls&#39;</span><span class="p">])</span>      <span class="c1"># 1815870</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;publisherCountry&#39;</span><span class="p">])</span>   <span class="c1"># United States</span>
+</pre></div>
+</div>
+<p><strong>Multi-language Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get app data in Spanish</span>
+<span class="n">app_es</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">app_analyze</span><span class="p">(</span><span class="s1">&#39;com.whatsapp&#39;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s1">&#39;es&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">app_es</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">])</span>  <span class="c1"># Description in Spanish</span>
+
+<span class="c1"># Get app data for UK region</span>
+<span class="n">app_uk</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">app_analyze</span><span class="p">(</span><span class="s1">&#39;com.whatsapp&#39;</span><span class="p">,</span> <span class="n">country</span><span class="o">=</span><span class="s1">&#39;gb&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Image Size Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get large images</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">app_analyze</span><span class="p">(</span><span class="s1">&#39;com.whatsapp&#39;</span><span class="p">,</span> <span class="n">assets</span><span class="o">=</span><span class="s1">&#39;LARGE&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;icon&#39;</span><span class="p">])</span>  <span class="c1"># URL with =w2048 parameter</span>
+</pre></div>
+</div>
+</section>
+<section id="app-get-field">
+<h2>app_get_field()<a class="headerlink" href="#app-get-field" title="Link to this heading">#</a></h2>
+<p>Get a single field value from app data.</p>
+<p><strong>Signature:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">app_get_field</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">,</span> <span class="n">country</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">assets</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">app_id</span></code> (str, required) - Google Play app ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">field</span></code> (str, required) - Field name to retrieve</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code> (str, optional) - Language code</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">country</span></code> (str, optional) - Country code</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">assets</span></code> (str, optional) - Image size</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>Value of the requested field (type depends on field)</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scraper</span> <span class="o">=</span> <span class="n">GPlayScraper</span><span class="p">()</span>
+
+<span class="c1"># Get title</span>
+<span class="n">title</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">app_get_field</span><span class="p">(</span><span class="s1">&#39;com.whatsapp&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>  <span class="c1"># &quot;WhatsApp Messenger&quot;</span>
+
+<span class="c1"># Get score</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">app_get_field</span><span class="p">(</span><span class="s1">&#39;com.whatsapp&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>  <span class="c1"># 4.2189474</span>
+
+<span class="c1"># Get daily installs</span>
+<span class="n">daily</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">app_get_field</span><span class="p">(</span><span class="s1">&#39;com.whatsapp&#39;</span><span class="p">,</span> <span class="s1">&#39;dailyInstalls&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">daily</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 1,815,870</span>
+</pre></div>
+</div>
+</section>
+<section id="app-get-fields">
+<h2>app_get_fields()<a class="headerlink" href="#app-get-fields" title="Link to this heading">#</a></h2>
+<p>Get multiple field values from app data.</p>
+<p><strong>Signature:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">app_get_fields</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">,</span> <span class="n">country</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">assets</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">app_id</span></code> (str, required) - Google Play app ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fields</span></code> (list, required) - List of field names</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code> (str, optional) - Language code</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">country</span></code> (str, optional) - Country code</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">assets</span></code> (str, optional) - Image size</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>Dictionary with requested fields and values</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scraper</span> <span class="o">=</span> <span class="n">GPlayScraper</span><span class="p">()</span>
+
+<span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;developer&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">,</span> <span class="s1">&#39;realInstalls&#39;</span><span class="p">,</span> <span class="s1">&#39;dailyInstalls&#39;</span><span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">app_get_fields</span><span class="p">(</span><span class="s1">&#39;com.whatsapp&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="c1"># {</span>
+<span class="c1">#     &#39;title&#39;: &#39;WhatsApp Messenger&#39;,</span>
+<span class="c1">#     &#39;developer&#39;: &#39;WhatsApp LLC&#39;,</span>
+<span class="c1">#     &#39;score&#39;: 4.2189474,</span>
+<span class="c1">#     &#39;realInstalls&#39;: 10931553905,</span>
+<span class="c1">#     &#39;dailyInstalls&#39;: 1815870</span>
+<span class="c1"># }</span>
+</pre></div>
+</div>
+</section>
+<section id="app-print-field">
+<h2>app_print_field()<a class="headerlink" href="#app-print-field" title="Link to this heading">#</a></h2>
+<p>Print a single field value to console.</p>
+<p><strong>Signature:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">app_print_field</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">,</span> <span class="n">country</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">assets</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Returns:</strong></p>
+<p>None (prints to console)</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scraper</span> <span class="o">=</span> <span class="n">GPlayScraper</span><span class="p">()</span>
+<span class="n">scraper</span><span class="o">.</span><span class="n">app_print_field</span><span class="p">(</span><span class="s1">&#39;com.whatsapp&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">)</span>
+<span class="c1"># Output: title: WhatsApp Messenger</span>
+</pre></div>
+</div>
+</section>
+<section id="app-print-fields">
+<h2>app_print_fields()<a class="headerlink" href="#app-print-fields" title="Link to this heading">#</a></h2>
+<p>Print multiple field values to console.</p>
+<p><strong>Signature:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">app_print_fields</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">,</span> <span class="n">country</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">assets</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Returns:</strong></p>
+<p>None (prints to console)</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scraper</span> <span class="o">=</span> <span class="n">GPlayScraper</span><span class="p">()</span>
+<span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">,</span> <span class="s1">&#39;dailyInstalls&#39;</span><span class="p">]</span>
+<span class="n">scraper</span><span class="o">.</span><span class="n">app_print_fields</span><span class="p">(</span><span class="s1">&#39;com.whatsapp&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="app-print-all">
+<h2>app_print_all()<a class="headerlink" href="#app-print-all" title="Link to this heading">#</a></h2>
+<p>Print all 57 fields as formatted JSON to console.</p>
+<p><strong>Signature:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">app_print_all</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">,</span> <span class="n">country</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">assets</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Returns:</strong></p>
+<p>None (prints to console)</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scraper</span> <span class="o">=</span> <span class="n">GPlayScraper</span><span class="p">()</span>
+<span class="n">scraper</span><span class="o">.</span><span class="n">app_print_all</span><span class="p">(</span><span class="s1">&#39;com.whatsapp&#39;</span><span class="p">)</span>
+<span class="c1"># Outputs all 57 fields as formatted JSON</span>
+</pre></div>
+</div>
+</section>
+<section id="available-fields">
+<h2>Available Fields<a class="headerlink" href="#available-fields" title="Link to this heading">#</a></h2>
+<p>The App methods return 57 fields organized into categories:</p>
+<p><strong>Basic Information (5 fields)</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">appId</span></code> - Package identifier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">title</span></code> - App name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">summary</span></code> - Short description</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code> - Full description</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">appUrl</span></code> - Play Store URL</p></li>
+</ul>
+<p><strong>Category (4 fields)</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">genre</span></code> - Primary category</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">genreId</span></code> - Category ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">categories</span></code> - All categories (array)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">available</span></code> - Availability status (boolean)</p></li>
+</ul>
+<p><strong>Release &amp; Updates (3 fields)</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">released</span></code> - Release date</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">appAgeDays</span></code> - Days since release (computed)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lastUpdated</span></code> - Last update date</p></li>
+</ul>
+<p><strong>Media (5 fields)</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">icon</span></code> - App icon URL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">headerImage</span></code> - Header image URL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">screenshots</span></code> - Screenshot URLs (array)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">video</span></code> - Promotional video URL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">videoImage</span></code> - Video thumbnail URL</p></li>
+</ul>
+<p><strong>Install Statistics (10 fields)</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">installs</span></code> - Install range string</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minInstalls</span></code> - Minimum installs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">realInstalls</span></code> - Exact install count</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dailyInstalls</span></code> - Average daily installs (computed)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minDailyInstalls</span></code> - Min daily installs (computed)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">realDailyInstalls</span></code> - Real daily installs (computed)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">monthlyInstalls</span></code> - Average monthly installs (computed)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minMonthlyInstalls</span></code> - Min monthly installs (computed)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">realMonthlyInstalls</span></code> - Real monthly installs (computed)</p></li>
+</ul>
+<p><strong>Ratings (4 fields)</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">score</span></code> - Average rating (0-5)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ratings</span></code> - Total number of ratings</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reviews</span></code> - Total number of reviews</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">histogram</span></code> - Rating distribution [1★, 2★, 3★, 4★, 5★]</p></li>
+</ul>
+<p><strong>Ads (2 fields)</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">adSupported</span></code> - Supports ads (boolean)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">containsAds</span></code> - Contains ads (boolean)</p></li>
+</ul>
+<p><strong>Technical (7 fields)</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">version</span></code> - Current version</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">androidVersion</span></code> - Minimum Android version</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">maxAndroidApi</span></code> - Maximum Android API level</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minAndroidApi</span></code> - Minimum Android API level</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">appBundle</span></code> - Bundle identifier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">contentRating</span></code> - Age rating</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">contentRatingDescription</span></code> - Rating description</p></li>
+</ul>
+<p><strong>Updates (1 field)</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">whatsNew</span></code> - Changelog (array)</p></li>
+</ul>
+<p><strong>Privacy (2 fields)</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">permissions</span></code> - Required permissions (object)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dataSafety</span></code> - Data safety info (array)</p></li>
+</ul>
+<p><strong>Pricing (7 fields)</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">price</span></code> - App price</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">currency</span></code> - Currency code</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">free</span></code> - Is free (boolean)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">offersIAP</span></code> - Has in-app purchases (boolean)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inAppProductPrice</span></code> - IAP price range</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sale</span></code> - On sale (boolean)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">originalPrice</span></code> - Original price if on sale</p></li>
+</ul>
+<p><strong>Developer (8 fields)</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">developer</span></code> - Developer name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">developerId</span></code> - Developer ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">developerEmail</span></code> - Contact email</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">developerWebsite</span></code> - Website URL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">developerAddress</span></code> - Physical address</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">developerPhone</span></code> - Contact phone</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">publisherCountry</span></code> - Publisher country (computed)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">privacyPolicy</span></code> - Privacy policy URL</p></li>
+</ul>
+</section>
+<section id="common-use-cases">
+<h2>Common Use Cases<a class="headerlink" href="#common-use-cases" title="Link to this heading">#</a></h2>
+<section id="app-analytics">
+<h3>App Analytics<a class="headerlink" href="#app-analytics" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scraper</span> <span class="o">=</span> <span class="n">GPlayScraper</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">app_analyze</span><span class="p">(</span><span class="s1">&#39;com.whatsapp&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;App: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total Installs: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;realInstalls&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Daily Installs: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;dailyInstalls&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Monthly Installs: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;monthlyInstalls&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Age: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;appAgeDays&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> days&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rating: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/5 (</span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;ratings&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> ratings)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="competitor-comparison">
+<h3>Competitor Comparison<a class="headerlink" href="#competitor-comparison" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apps</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;com.whatsapp&#39;</span><span class="p">,</span> <span class="s1">&#39;org.telegram.messenger&#39;</span><span class="p">,</span> <span class="s1">&#39;org.thoughtcrime.securesms&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">app_id</span> <span class="ow">in</span> <span class="n">apps</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">app_analyze</span><span class="p">(</span><span class="n">app_id</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Installs: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;realInstalls&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Rating: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/5&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Daily Growth: </span><span class="si">{</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;dailyInstalls&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="market-research">
+<h3>Market Research<a class="headerlink" href="#market-research" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get key metrics for analysis</span>
+<span class="n">fields</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;developer&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">,</span> <span class="s1">&#39;ratings&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;realInstalls&#39;</span><span class="p">,</span> <span class="s1">&#39;dailyInstalls&#39;</span><span class="p">,</span> <span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span>
+<span class="p">]</span>
+
+<span class="n">apps</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;com.app1&#39;</span><span class="p">,</span> <span class="s1">&#39;com.app2&#39;</span><span class="p">,</span> <span class="s1">&#39;com.app3&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">app_id</span> <span class="ow">in</span> <span class="n">apps</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">app_get_fields</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="n">fields</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../fields.html"><span class="doc">Field Reference</span></a> - Complete field reference</p></li>
+<li><p><a class="reference internal" href="../examples.html"><span class="doc">Examples</span></a> - More practical examples</p></li>
+<li><p><a class="reference internal" href="../configuration.html"><span class="doc">Configuration</span></a> - Configuration options</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../examples.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Examples</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="search.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Search Methods</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#available-methods">Available Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-analyze">app_analyze()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-get-field">app_get_field()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-get-fields">app_get_fields()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-print-field">app_print_field()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-print-fields">app_print_fields()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-print-all">app_print_all()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#available-fields">Available Fields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-use-cases">Common Use Cases</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#app-analytics">App Analytics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#competitor-comparison">Competitor Comparison</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#market-research">Market Research</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By GPlay Scraper
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, GPlay Scraper.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>Built with ❤️ using Sphinx Book Theme</p>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

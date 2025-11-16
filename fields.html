@@ -1,0 +1,776 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Field Reference &#8212; GPlay Scraper</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=f6a7b546"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=30646c52"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'fields';</script>
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Error Handling" href="error_handling.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search documentation..."
+         aria-label="Search documentation..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">GPlay Scraper</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/mohammedcha/gplay-scraper" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/gplay-scraper/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    GPlay Scraper Documentation
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="api/app.html">App Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/search.html">Search Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/reviews.html">Reviews Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/developer.html">Developer Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/similar.html">Similar Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/list.html">List Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/suggest.html">Suggest Methods</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="error_handling.html">Error Handling</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Field Reference</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mohammedcha/gplay-scraper" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mohammedcha/gplay-scraper/issues/new?title=Issue%20on%20page%20%2Ffields.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/fields.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Field Reference</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-fields-57-fields">App Fields (57 Fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-information-5-fields">Basic Information (5 fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#category-4-fields">Category (4 fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#release-updates-3-fields">Release &amp; Updates (3 fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#media-5-fields">Media (5 fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-statistics-10-fields">Install Statistics (10 fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratings-4-fields">Ratings (4 fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ads-2-fields">Ads (2 fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-7-fields">Technical (7 fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updates-1-field">Updates (1 field)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#privacy-2-fields">Privacy (2 fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pricing-7-fields">Pricing (7 fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#developer-8-fields">Developer (8 fields)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-fields-11-fields">Search Fields (11 Fields)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-fields-8-fields">Review Fields (8 Fields)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#developer-app-fields-11-fields">Developer App Fields (11 Fields)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#similar-app-fields-11-fields">Similar App Fields (11 Fields)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-top-charts-fields-14-fields">List (Top Charts) Fields (14 Fields)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computed-fields">Computed Fields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#field-count-summary">Field Count Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="field-reference">
+<h1>Field Reference<a class="headerlink" href="#field-reference" title="Link to this heading">#</a></h1>
+<p>Complete reference of all 112 fields returned by GPlay Scraper.</p>
+<section id="app-fields-57-fields">
+<h2>App Fields (57 Fields)<a class="headerlink" href="#app-fields-57-fields" title="Link to this heading">#</a></h2>
+<section id="basic-information-5-fields">
+<h3>Basic Information (5 fields)<a class="headerlink" href="#basic-information-5-fields" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">appId</span></code> (string) - Package identifier (e.g., “com.whatsapp”)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">title</span></code> (string) - App name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">summary</span></code> (string) - Short description</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code> (string) - Full description</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">appUrl</span></code> (string) - Play Store URL</p></li>
+</ul>
+</section>
+<section id="category-4-fields">
+<h3>Category (4 fields)<a class="headerlink" href="#category-4-fields" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">genre</span></code> (string) - Primary category</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">genreId</span></code> (string) - Category ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">categories</span></code> (array) - All categories</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">available</span></code> (boolean) - Availability status</p></li>
+</ul>
+</section>
+<section id="release-updates-3-fields">
+<h3>Release &amp; Updates (3 fields)<a class="headerlink" href="#release-updates-3-fields" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">released</span></code> (string) - Release date (e.g., “Oct 18, 2010”)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">appAgeDays</span></code> (integer) - Days since release (computed)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lastUpdated</span></code> (string) - Last update date</p></li>
+</ul>
+</section>
+<section id="media-5-fields">
+<h3>Media (5 fields)<a class="headerlink" href="#media-5-fields" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">icon</span></code> (string) - App icon URL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">headerImage</span></code> (string) - Header image URL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">screenshots</span></code> (array) - Screenshot URLs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">video</span></code> (string or null) - Promotional video URL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">videoImage</span></code> (string or null) - Video thumbnail URL</p></li>
+</ul>
+</section>
+<section id="install-statistics-10-fields">
+<h3>Install Statistics (10 fields)<a class="headerlink" href="#install-statistics-10-fields" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">installs</span></code> (string) - Install range (e.g., “10,000,000,000+”)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minInstalls</span></code> (integer) - Minimum installs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">realInstalls</span></code> (integer) - Exact install count</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dailyInstalls</span></code> (integer) - Average daily installs (computed)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minDailyInstalls</span></code> (integer) - Min daily installs (computed)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">realDailyInstalls</span></code> (integer) - Real daily installs (computed)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">monthlyInstalls</span></code> (integer) - Average monthly installs (computed)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minMonthlyInstalls</span></code> (integer) - Min monthly installs (computed)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">realMonthlyInstalls</span></code> (integer) - Real monthly installs (computed)</p></li>
+</ul>
+</section>
+<section id="ratings-4-fields">
+<h3>Ratings (4 fields)<a class="headerlink" href="#ratings-4-fields" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">score</span></code> (float) - Average rating (0-5)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ratings</span></code> (integer) - Total ratings count</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reviews</span></code> (integer) - Total reviews count</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">histogram</span></code> (array) - Rating distribution [1★, 2★, 3★, 4★, 5★]</p></li>
+</ul>
+</section>
+<section id="ads-2-fields">
+<h3>Ads (2 fields)<a class="headerlink" href="#ads-2-fields" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">adSupported</span></code> (boolean) - Supports ads</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">containsAds</span></code> (boolean) - Contains ads</p></li>
+</ul>
+</section>
+<section id="technical-7-fields">
+<h3>Technical (7 fields)<a class="headerlink" href="#technical-7-fields" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">version</span></code> (string) - Current version</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">androidVersion</span></code> (string) - Minimum Android version</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">maxAndroidApi</span></code> (integer) - Maximum Android API</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minAndroidApi</span></code> (string or integer) - Minimum Android API</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">appBundle</span></code> (string) - Bundle identifier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">contentRating</span></code> (string) - Age rating</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">contentRatingDescription</span></code> (string) - Rating description</p></li>
+</ul>
+</section>
+<section id="updates-1-field">
+<h3>Updates (1 field)<a class="headerlink" href="#updates-1-field" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">whatsNew</span></code> (array) - Changelog entries</p></li>
+</ul>
+</section>
+<section id="privacy-2-fields">
+<h3>Privacy (2 fields)<a class="headerlink" href="#privacy-2-fields" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">permissions</span></code> (object) - Required permissions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dataSafety</span></code> (array) - Data safety information</p></li>
+</ul>
+</section>
+<section id="pricing-7-fields">
+<h3>Pricing (7 fields)<a class="headerlink" href="#pricing-7-fields" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">price</span></code> (number) - App price</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">currency</span></code> (string) - Currency code</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">free</span></code> (boolean) - Is free</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">offersIAP</span></code> (boolean) - Has in-app purchases</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inAppProductPrice</span></code> (string or null) - IAP price range</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sale</span></code> (boolean) - On sale</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">originalPrice</span></code> (number or null) - Original price if on sale</p></li>
+</ul>
+</section>
+<section id="developer-8-fields">
+<h3>Developer (8 fields)<a class="headerlink" href="#developer-8-fields" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">developer</span></code> (string) - Developer name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">developerId</span></code> (string) - Developer ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">developerEmail</span></code> (string) - Contact email</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">developerWebsite</span></code> (string) - Website URL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">developerAddress</span></code> (string) - Physical address</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">developerPhone</span></code> (string or null) - Contact phone</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">publisherCountry</span></code> (string) - Publisher country (computed)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">privacyPolicy</span></code> (string) - Privacy policy URL</p></li>
+</ul>
+</section>
+</section>
+<section id="search-fields-11-fields">
+<h2>Search Fields (11 Fields)<a class="headerlink" href="#search-fields-11-fields" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">title</span></code> - App name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">appId</span></code> - Package identifier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">url</span></code> - Play Store URL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">icon</span></code> - App icon URL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">developer</span></code> - Developer name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">summary</span></code> - Short description</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">score</span></code> - Average rating (0-5)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scoreText</span></code> - Rating as text</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">price</span></code> - App price</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">free</span></code> - Is free (boolean)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">currency</span></code> - Currency code</p></li>
+</ul>
+</section>
+<section id="review-fields-8-fields">
+<h2>Review Fields (8 Fields)<a class="headerlink" href="#review-fields-8-fields" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">reviewId</span></code> - Unique review ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">userName</span></code> - Reviewer name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">userImage</span></code> - Reviewer image URL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">content</span></code> - Review text</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">score</span></code> - Rating (1-5)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thumbsUpCount</span></code> - Helpful votes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">at</span></code> - Review date (ISO format)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">appVersion</span></code> - App version reviewed</p></li>
+</ul>
+</section>
+<section id="developer-app-fields-11-fields">
+<h2>Developer App Fields (11 Fields)<a class="headerlink" href="#developer-app-fields-11-fields" title="Link to this heading">#</a></h2>
+<p>Same as Search Fields.</p>
+</section>
+<section id="similar-app-fields-11-fields">
+<h2>Similar App Fields (11 Fields)<a class="headerlink" href="#similar-app-fields-11-fields" title="Link to this heading">#</a></h2>
+<p>Same as Search Fields.</p>
+</section>
+<section id="list-top-charts-fields-14-fields">
+<h2>List (Top Charts) Fields (14 Fields)<a class="headerlink" href="#list-top-charts-fields-14-fields" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">title</span></code> - App name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">appId</span></code> - Package identifier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">url</span></code> - Play Store URL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">icon</span></code> - App icon URL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">screenshots</span></code> - Screenshot URLs (array)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">developer</span></code> - Developer name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">genre</span></code> - Category/genre</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">installs</span></code> - Install count</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code> - App description</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">score</span></code> - Average rating</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scoreText</span></code> - Rating as text</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">price</span></code> - App price</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">free</span></code> - Is free (boolean)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">currency</span></code> - Currency code</p></li>
+</ul>
+</section>
+<section id="computed-fields">
+<h2>Computed Fields<a class="headerlink" href="#computed-fields" title="Link to this heading">#</a></h2>
+<p>The following 8 fields are computed at runtime:</p>
+<dl class="simple">
+<dt><strong>appAgeDays</strong></dt><dd><p>Calculated as: <code class="docutils literal notranslate"><span class="pre">(current_date</span> <span class="pre">-</span> <span class="pre">release_date).days</span></code></p>
+</dd>
+<dt><strong>dailyInstalls</strong></dt><dd><p>Calculated as: <code class="docutils literal notranslate"><span class="pre">total_installs</span> <span class="pre">/</span> <span class="pre">days_since_release</span></code></p>
+</dd>
+<dt><strong>minDailyInstalls</strong></dt><dd><p>Calculated as: <code class="docutils literal notranslate"><span class="pre">min_installs</span> <span class="pre">/</span> <span class="pre">days_since_release</span></code></p>
+</dd>
+<dt><strong>realDailyInstalls</strong></dt><dd><p>Calculated as: <code class="docutils literal notranslate"><span class="pre">real_installs</span> <span class="pre">/</span> <span class="pre">days_since_release</span></code></p>
+</dd>
+<dt><strong>monthlyInstalls</strong></dt><dd><p>Calculated as: <code class="docutils literal notranslate"><span class="pre">total_installs</span> <span class="pre">/</span> <span class="pre">(days_since_release</span> <span class="pre">/</span> <span class="pre">30.44)</span></code></p>
+</dd>
+<dt><strong>minMonthlyInstalls</strong></dt><dd><p>Calculated as: <code class="docutils literal notranslate"><span class="pre">min_installs</span> <span class="pre">/</span> <span class="pre">months_since_release</span></code></p>
+</dd>
+<dt><strong>realMonthlyInstalls</strong></dt><dd><p>Calculated as: <code class="docutils literal notranslate"><span class="pre">real_installs</span> <span class="pre">/</span> <span class="pre">months_since_release</span></code></p>
+</dd>
+<dt><strong>publisherCountry</strong></dt><dd><p>Extracted from developer phone prefix or address</p>
+</dd>
+</dl>
+</section>
+<section id="field-count-summary">
+<h2>Field Count Summary<a class="headerlink" href="#field-count-summary" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>App: 57 fields</p></li>
+<li><p>Search: 11 fields</p></li>
+<li><p>Reviews: 8 fields</p></li>
+<li><p>Developer: 11 fields</p></li>
+<li><p>Similar: 11 fields</p></li>
+<li><p>List: 14 fields</p></li>
+<li><p><strong>Total: 112 unique fields</strong></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="error_handling.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Error Handling</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-fields-57-fields">App Fields (57 Fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-information-5-fields">Basic Information (5 fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#category-4-fields">Category (4 fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#release-updates-3-fields">Release &amp; Updates (3 fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#media-5-fields">Media (5 fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-statistics-10-fields">Install Statistics (10 fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratings-4-fields">Ratings (4 fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ads-2-fields">Ads (2 fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-7-fields">Technical (7 fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updates-1-field">Updates (1 field)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#privacy-2-fields">Privacy (2 fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pricing-7-fields">Pricing (7 fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#developer-8-fields">Developer (8 fields)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-fields-11-fields">Search Fields (11 Fields)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-fields-8-fields">Review Fields (8 Fields)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#developer-app-fields-11-fields">Developer App Fields (11 Fields)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#similar-app-fields-11-fields">Similar App Fields (11 Fields)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-top-charts-fields-14-fields">List (Top Charts) Fields (14 Fields)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computed-fields">Computed Fields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#field-count-summary">Field Count Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By GPlay Scraper
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, GPlay Scraper.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>Built with ❤️ using Sphinx Book Theme</p>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
