@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.6] - 2025-11-16
+
+### Bug Fixes
+
+- **Reviews Pagination Fix**: Fixed critical issue when requesting more reviews than available
+  - Resolved 'NoneType' object is not subscriptable error
+  - Improved token extraction logic for empty review responses
+  - Now gracefully returns available reviews instead of crashing
+  - Enhanced error handling in ReviewsScraper and ReviewsParser
+- **Empty Response Handling**: Better handling of apps with limited reviews
+  - Safe bounds checking for pagination tokens
+  - Proper null checking for empty data structures
+  - Graceful degradation when no more reviews are available
+
+### Acknowledgments
+
+- Thanks to [@PhamDinhThienVu](https://github.com/PhamDinhThienVu) for reporting the reviews pagination bug
+
 ## [1.0.5] - 2025-10-18
 
 ### New Features

@@ -8,7 +8,7 @@ with open("requirements.txt", "r", encoding="utf-8") as fh:
 
 setup(
     name="gplay-scraper",
-    version="1.0.5",
+    version="1.0.6",
     description="🚀 Advanced Google Play Store Scraper - Extract 65+ app fields, reviews, ratings, ASO data, developer info, top charts, search results with 7 HTTP clients & unlimited pagination support",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -17,7 +17,7 @@ setup(
     maintainer="Mohammed Cha",
     maintainer_email="contact@mohammedcha.com",
     url="https://github.com/mohammedcha/gplay-scraper",
-    download_url="https://github.com/mohammedcha/gplay-scraper/archive/v1.0.5.tar.gz",
+    download_url="https://github.com/mohammedcha/gplay-scraper/archive/v1.0.6.tar.gz",
     project_urls={
         "Homepage": "https://github.com/mohammedcha/gplay-scraper",
         "Documentation": "https://mohammedcha.github.io/gplay-scraper/",

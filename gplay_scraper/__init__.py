@@ -35,7 +35,7 @@ from .exceptions import (
 logging.getLogger(__name__).addHandler(logging.NullHandler())
 
 # Package metadata
-__version__ = "1.0.5"
+__version__ = "1.0.6"
 
 # Public API exports
 __all__ = [

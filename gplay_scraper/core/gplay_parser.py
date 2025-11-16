@@ -355,6 +355,9 @@ class ReviewsParser:
         Returns:
             Tuple of (list of review dictionaries, next page token)
         """
+        if not content or not isinstance(content, str):
+            return [], None
+            
         regex = re.compile(r"\)]}'\n\n([\s\S]+)")
         matches = regex.findall(content)
         
@@ -363,26 +366,40 @@ class ReviewsParser:
         
         try:
             data = json.loads(matches[0])
+            if not data or len(data) == 0 or len(data[0]) < 3:
+                return [], None
+                
             reviews_data = json.loads(data[0][2])
             
+            # Handle case where reviews_data is None or empty
+            if not reviews_data:
+                return [], None
+                
             next_token = None
             try:
-                next_token = json.loads(data[0][2])[-2][-1]
-            except:
+                if (isinstance(reviews_data, list) and len(reviews_data) >= 2 and 
+                    reviews_data[-2] and isinstance(reviews_data[-2], list) and len(reviews_data[-2]) > 0):
+                    potential_token = reviews_data[-2][-1]
+                    if isinstance(potential_token, str):
+                        next_token = potential_token
+            except (IndexError, TypeError, AttributeError):
                 pass
             
-            if not reviews_data or len(reviews_data) == 0 or len(reviews_data[0]) == 0:
+            # Check if we have actual reviews data
+            if (not isinstance(reviews_data, list) or len(reviews_data) == 0 or 
+                not isinstance(reviews_data[0], list) or len(reviews_data[0]) == 0):
                 return [], None
             
             reviews = []
             for review_raw in reviews_data[0]:
-                review = self.extract_review_data(review_raw)
-                if review:
-                    reviews.append(review)
+                if review_raw:  # Make sure review_raw is not None
+                    review = self.extract_review_data(review_raw)
+                    if review:
+                        reviews.append(review)
             
             return reviews, next_token
             
-        except (json.JSONDecodeError, IndexError, KeyError):
+        except (json.JSONDecodeError, IndexError, KeyError, TypeError, AttributeError):
             return [], None
 
     @handle_parsing_errors()
@@ -425,12 +442,23 @@ class ReviewsParser:
         Returns:
             List of all parsed reviews
         """
+        if not dataset or not isinstance(dataset, dict):
+            return []
+            
         responses = dataset.get("reviews", [])
+        if not responses or not isinstance(responses, list):
+            return []
+            
         all_reviews = []
         
         for response in responses:
-            reviews, _ = self.parse_reviews_response(response)
-            all_reviews.extend(reviews)
+            if response and isinstance(response, str):
+                try:
+                    reviews, _ = self.parse_reviews_response(response)
+                    if reviews:  # Only extend if we got actual reviews
+                        all_reviews.extend(reviews)
+                except Exception:
+                    continue  # Skip this response if it fails
         
         return all_reviews
 

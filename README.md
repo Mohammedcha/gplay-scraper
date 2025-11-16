@@ -3,6 +3,7 @@
 [![PyPI version](https://badge.fury.io/py/gplay-scraper.svg)](https://badge.fury.io/py/gplay-scraper)
 [![Python](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Documentation](https://img.shields.io/badge/docs-available-brightgreen.svg)](https://mohammedcha.github.io/gplay-scraper/)
 [![Downloads](https://pepy.tech/badge/gplay-scraper)](https://pepy.tech/project/gplay-scraper)
 [![GitHub stars](https://img.shields.io/github/stars/Mohammedcha/gplay-scraper.svg)](https://github.com/Mohammedcha/gplay-scraper/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/Mohammedcha/gplay-scraper.svg)](https://github.com/Mohammedcha/gplay-scraper/issues)
@@ -12,6 +13,10 @@
 </div>
 
 **GPlay Scraper** is a powerful Python library for extracting comprehensive data from the Google Play Store. Built for developers, data analysts, and researchers, it provides easy access to app information, user reviews, search results, top charts, and market intelligence—all without requiring API keys.
+
+## 🐛 Found a Bug? Help Us Improve!
+
+**We value your feedback!** If you encounter any bugs, errors, or have suggestions for improvements, please [open an issue](https://github.com/Mohammedcha/gplay-scraper/issues). Contributors who report bugs or suggest features will be acknowledged in our [Contributors section](#-contributors) 🙏
 
 ## 🎯 What Can You Scrape?
 
@@ -48,24 +53,23 @@
 - Localized pricing and availability
 - Competitive analysis and benchmarking
 
-## 🆕 **What's New in v1.0.5** 
+## 🆕 **What's New in v1.0.6** 
 
-**✅ Publisher Country Detection:**
-- **Automatic Country Detection** - Detects developer's country from phone number and address
-- **International Phone Prefixes** - Uses phone number prefixes to identify countries
-- **Address Parsing** - Analyzes developer addresses for country information
-- **Multi-Country Support** - Handles cases where phone and address differ (e.g., "United States/Germany")
-- **Enhanced Developer Intelligence** - Adds `publisherCountry` field to app data
+**✅ Critical Bug Fixes:**
+- **Reviews Pagination Fix** - Fixed critical issue when requesting more reviews than available
+- **NoneType Error Resolution** - Resolved 'NoneType' object is not subscriptable error in reviews
+- **Empty Response Handling** - Better handling of apps with limited reviews
+- **Token Extraction Logic** - Improved pagination token handling for empty responses
+- **Graceful Degradation** - Now returns available reviews instead of crashing
 
-**✅ Enhanced Error Handling:**
-- **Better HTTP Client Fallback** - Improved reliability when requests fail
-- **Robust JSON Parsing** - Multiple fallback strategies for malformed responses
-- **Network Timeout Handling** - Better handling of connection errors
-- **Automatic Retry Logic** - Exponential backoff for rate limiting
-- **Error Recovery** - Better recovery from temporary network issues
+**✅ Enhanced Reliability:**
+- **Safe Bounds Checking** - Added proper bounds checking for pagination tokens
+- **Null Checking** - Enhanced null checking for empty data structures
+- **Error Recovery** - Improved error handling in ReviewsScraper and ReviewsParser
+- **Stability Improvements** - Better handling of edge cases in reviews extraction
 
-**✅ Removed Features:**
-- **Removed updatedTimestamp** - Removed deprecated timestamp field that was causing confusion
+**🙏 Acknowledgments:**
+- Thanks to [@PhamDinhThienVu](https://github.com/PhamDinhThienVu) for reporting the reviews pagination bug
 
 **✅ 7 Method Types:**
 - **App Methods** - Extract 65+ data fields from any app (ratings, installs, pricing, permissions, etc.)
@@ -324,6 +328,13 @@ scraper.suggest_print_all("photo editor", count=10, lang="en", country="us")
 ## 📄 License
 
 This project is licensed under the MIT License.
+
+## 🙏 Contributors
+
+Special thanks to developers who helped improve this library:
+
+- [@PhamDinhThienVu](https://github.com/PhamDinhThienVu) - Reported reviews pagination bug (v1.0.6)
+- [@elmissouri16](https://github.com/elmissouri16) - Suggested multiple HTTP clients support (v1.0.3)
 
 ---
 

@@ -309,13 +309,29 @@ class ReviewsScraper:
                 matches = regex.findall(response)
                 if matches:
                     data = json.loads(matches[0])
-                    token = json.loads(data[0][2])[-2][-1]
-                    if not token or isinstance(token, list):
+                    parsed_data = json.loads(data[0][2])
+                    
+                    # Check if we got any reviews in this batch
+                    if not parsed_data or len(parsed_data) == 0 or (len(parsed_data) > 0 and len(parsed_data[0]) == 0):
                         break
-            except (json.JSONDecodeError, IndexError, KeyError):
+                    
+                    # Extract next token safely
+                    try:
+                        if len(parsed_data) >= 2 and parsed_data[-2] and len(parsed_data[-2]) > 0:
+                            token = parsed_data[-2][-1]
+                        else:
+                            token = None
+                    except (IndexError, TypeError, AttributeError):
+                        token = None
+                        
+                    if not token or isinstance(token, list) or not isinstance(token, str):
+                        break
+                else:
+                    break
+            except (json.JSONDecodeError, IndexError, KeyError, TypeError):
                 break
         
-        return {"reviews": all_responses}
+        return {"reviews": all_responses if all_responses else []}
 
 
 class DeveloperScraper:
