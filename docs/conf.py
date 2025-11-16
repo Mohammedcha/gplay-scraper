@@ -1,79 +1,68 @@
-# Configuration file for Sphinx documentation builder
-
-import os
-import sys
-sys.path.insert(0, os.path.abspath('..'))
-
-# Project information
 project = 'GPlay Scraper'
-copyright = '2025, Mohammed Cha'
-author = 'Mohammed Cha'
+copyright = '2025, GPlay Scraper'
+author = 'GPlay Scraper'
 release = '1.0.5'
 
-# Extensions
 extensions = [
     'sphinx.ext.autodoc',
-    'sphinx.ext.viewcode',
     'sphinx.ext.napoleon',
-    'sphinx.ext.intersphinx',
-    'sphinx_rtd_theme',
+    'sphinx.ext.viewcode',
 ]
 
-# Templates path
+try:
+    import sphinx_copybutton
+    extensions.append('sphinx_copybutton')
+except ImportError:
+    pass
+
 templates_path = ['_templates']
-
-# Exclude patterns
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+language = 'en'
 
-# HTML theme
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'sphinx_book_theme'
+
+html_theme_options = {
+    "repository_url": "https://github.com/mohammedcha/gplay-scraper",
+    "repository_branch": "main",
+    "use_repository_button": True,
+    "use_issues_button": True,
+    "use_edit_page_button": False,
+    "use_download_button": True,
+    "home_page_in_toc": True,
+    "show_navbar_depth": 2,
+    "show_toc_level": 2,
+    "navigation_with_keys": True,
+    "collapse_navbar": False,
+    "logo": {
+        "text": "GPlay Scraper",
+    },
+    "extra_footer": "<p>Built with ❤️ using Sphinx Book Theme</p>",
+    "search_bar_text": "Search documentation...",
+    "icon_links": [
+        {
+            "name": "GitHub",
+            "url": "https://github.com/mohammedcha/gplay-scraper",
+            "icon": "fa-brands fa-github",
+            "type": "fontawesome",
+        },
+        {
+            "name": "PyPI",
+            "url": "https://pypi.org/project/gplay-scraper/",
+            "icon": "fa-brands fa-python",
+            "type": "fontawesome",
+        },
+    ],
+}
+
+pygments_style = 'monokai'
+pygments_dark_style = 'monokai'
+
+html_title = "GPlay Scraper"
 html_static_path = ['_static']
 
-# HTML theme options
-html_theme_options = {
-    'canonical_url': 'https://mohammedcha.github.io/gplay-scraper/',
-    'analytics_id': '',
-    'logo_only': False,
-    'display_version': True,
-    'prev_next_buttons_location': 'bottom',
-    'style_external_links': False,
-    'vcs_pageview_mode': '',
-    'style_nav_header_background': '#2980B9',
-    # Toc options
-    'collapse_navigation': False,
-    'sticky_navigation': True,
-    'navigation_depth': 4,
-    'includehidden': True,
-    'titles_only': False
-}
+html_logo = "_static/logo.png"
+html_favicon = "_static/favicon.png"
 
-# GitHub Pages configuration
-html_baseurl = 'https://mohammedcha.github.io/gplay-scraper/'
-html_context = {
-    'display_github': True,
-    'github_user': 'mohammedcha',
-    'github_repo': 'gplay-scraper',
-    'github_version': 'main',
-    'conf_py_path': '/docs/',
-}
-
-# Napoleon settings (for Google/NumPy style docstrings)
-napoleon_google_docstring = True
-napoleon_numpy_docstring = True
-napoleon_include_init_with_doc = False
-napoleon_include_private_with_doc = False
-
-# Autodoc settings
-autodoc_default_options = {
-    'members': True,
-    'member-order': 'bysource',
-    'special-members': '__init__',
-    'undoc-members': True,
-    'exclude-members': '__weakref__'
-}
-
-# Intersphinx mapping
-intersphinx_mapping = {
-    'python': ('https://docs.python.org/3', None),
-    'requests': ('https://requests.readthedocs.io/en/latest/', None),
-}
+if 'sphinx_copybutton' in extensions:
+    copybutton_prompt_text = r">>> |\.\.\. |\$ |In \[\d*\]: | {2,5}\.\.\.: | {5,8}: "
+    copybutton_prompt_is_regexp = True

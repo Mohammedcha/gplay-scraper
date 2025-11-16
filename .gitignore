@@ -150,6 +150,7 @@ update_pypi.sh
 
 # Test and debug files
 xx.py
+x_fallback.py
 test_all_methods.py
 debug_limbo*.py
 limbo_ds5_raw.txt

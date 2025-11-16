@@ -1,306 +1,280 @@
 Quick Start Guide
 =================
 
-This guide will get you up and running with GPlay Scraper in minutes.
+This guide will get you started with GPlay Scraper in 5 minutes.
 
 Basic Usage
 -----------
 
-Import and Initialize
-~~~~~~~~~~~~~~~~~~~~~
+Initialize the Scraper
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: python
 
    from gplay_scraper import GPlayScraper
-   
-   # Initialize with default HTTP client (requests)
+
+   # Initialize once
    scraper = GPlayScraper()
-   
-   # Or specify HTTP client
-   scraper = GPlayScraper(http_client="curl_cffi")
-   # Options: requests, curl_cffi, tls_client, httpx, urllib3, cloudscraper, aiohttp
 
-7 Method Types
---------------
+Get App Data
+^^^^^^^^^^^^
 
-GPlay Scraper provides 7 method types, each with 6 functions:
-
-1. **App Methods** - Extract 65+ fields from any app
-2. **Search Methods** - Search for apps by keyword
-3. **Reviews Methods** - Get user reviews and ratings
-4. **Developer Methods** - Get all apps from a developer
-5. **List Methods** - Get top charts (free, paid, grossing)
-6. **Similar Methods** - Find similar/competitor apps
-7. **Suggest Methods** - Get search suggestions
-
-Each method type has these functions:
-
-- ``analyze()`` - Get all data as dictionary/list
-- ``get_field()`` - Get single field value
-- ``get_fields()`` - Get multiple fields
-- ``print_field()`` - Print single field to console
-- ``print_fields()`` - Print multiple fields to console
-- ``print_all()`` - Print all data as JSON
-
-Common Parameters
------------------
-
-All methods support these parameters:
-
-- ``lang`` - Language code (default: "en")
-- ``country`` - Country code (default: "us")
-- ``count`` - Number of results to return
+Extract complete app information with 57 fields:
 
 .. code-block:: python
 
-   # English for United States (default)
-   scraper.app_analyze("com.whatsapp", lang="en", country="us")
-   
-   # Spanish for Spain
-   scraper.app_analyze("com.whatsapp", lang="es", country="es")
-   
-   # French for France
-   scraper.app_analyze("com.whatsapp", lang="fr", country="fr")
-
-1. App Methods
---------------
-
-Extract 65+ fields from any app:
-
-.. code-block:: python
-
-   app_id = "com.whatsapp"
-   
    # Get all app data
-   data = scraper.app_analyze(app_id, lang="en", country="us")
-   print(f"Title: {data['title']}")
-   print(f"Rating: {data['score']}")
+   app = scraper.app_analyze('com.whatsapp')
    
+   # Access the data
+   print(app['title'])              # App name
+   print(app['developer'])          # Developer name
+   print(app['score'])              # Rating (0-5)
+   print(app['realInstalls'])       # Exact install count
+   print(app['dailyInstalls'])      # Average daily installs
+   print(app['publisherCountry'])   # Publisher country
+
+Get Specific Fields
+^^^^^^^^^^^^^^^^^^^
+
+If you only need certain fields:
+
+.. code-block:: python
+
    # Get single field
-   title = scraper.app_get_field(app_id, "title", lang="en", country="us")
+   title = scraper.app_get_field('com.whatsapp', 'title')
    
    # Get multiple fields
-   fields = scraper.app_get_fields(app_id, ["title", "score", "installs"])
-   
-   # Print methods
-   scraper.app_print_all(app_id)
+   fields = scraper.app_get_fields('com.whatsapp', 
+       ['title', 'score', 'dailyInstalls'])
 
-2. Search Methods
------------------
+Search for Apps
+^^^^^^^^^^^^^^^
 
-Search for apps by keyword:
+Search the Play Store by keyword:
 
 .. code-block:: python
 
-   query = "social media"
+   # Search for apps
+   results = scraper.search_analyze('messaging', count=10)
    
-   # Get all search results
-   results = scraper.search_analyze(query, count=20, lang="en", country="us")
+   # Iterate through results
    for app in results:
-       print(f"{app['title']} - {app['developer']}")
-   
-   # Get single field from all results
-   titles = scraper.search_get_field(query, "title", count=10)
-   
-   # Get multiple fields
-   data = scraper.search_get_fields(query, ["title", "score"], count=10)
-   
-   # Print methods
-   scraper.search_print_all(query, count=10)
+       print(f"{app['title']} by {app['developer']}")
+       print(f"  Rating: {app['score']}/5")
+       print(f"  Free: {app['free']}")
 
-3. Reviews Methods
-------------------
+Get Reviews
+^^^^^^^^^^^
 
-Get user reviews with ratings:
+Extract user reviews with ratings:
 
 .. code-block:: python
 
-   app_id = "com.whatsapp"
+   # Get newest reviews
+   reviews = scraper.reviews_analyze('com.whatsapp', 
+       count=50, 
+       sort='NEWEST')
    
-   # Get reviews (sort: NEWEST, RELEVANT, RATING)
-   reviews = scraper.reviews_analyze(app_id, count=50, sort="NEWEST")
+   # Process reviews
    for review in reviews:
-       print(f"{review['userName']}: {review['score']} stars")
-   
-   # Get specific field from reviews
-   scores = scraper.reviews_get_field(app_id, "score", count=100, sort="NEWEST")
-   
-   # Print methods
-   scraper.reviews_print_all(app_id, count=50, sort="NEWEST")
+       print(f"{review['userName']}: {review['score']}/5")
+       print(f"  {review['content'][:100]}...")
 
-4. Developer Methods
---------------------
+Get Developer Apps
+^^^^^^^^^^^^^^^^^^
 
-Get all apps from a developer:
+Find all apps from a developer:
 
 .. code-block:: python
 
-   dev_id = "5700313618786177705"  # WhatsApp Inc.
+   # Get all apps from Google
+   apps = scraper.developer_analyze('Google LLC')
    
-   # Get all developer apps
-   apps = scraper.developer_analyze(dev_id, count=20, lang="en", country="us")
    for app in apps:
-       print(f"{app['title']} - {app['score']} stars")
-   
-   # Get specific fields
-   titles = scraper.developer_get_field(dev_id, "title", count=20)
-   
-   # Print methods
-   scraper.developer_print_all(dev_id, count=20)
+       print(f"{app['title']} - {app['score']}/5")
 
-5. List Methods
----------------
+Find Similar Apps
+^^^^^^^^^^^^^^^^^
 
-Get top charts:
+Discover competitor or similar apps:
 
 .. code-block:: python
 
-   # Collections: TOP_FREE, TOP_PAID, TOP_GROSSING
-   # Categories: GAME, SOCIAL, COMMUNICATION, etc.
+   # Find apps similar to WhatsApp
+   similar = scraper.similar_analyze('com.whatsapp', count=20)
    
-   # Get top free games
-   apps = scraper.list_analyze("TOP_FREE", "GAME", count=50)
-   for app in apps:
-       print(f"{app['title']} - {app['installs']}")
-   
-   # Get top paid apps
-   apps = scraper.list_analyze("TOP_PAID", "APPLICATION", count=20)
-   
-   # Print methods
-   scraper.list_print_all("TOP_FREE", "GAME", count=20)
-
-6. Similar Methods
-------------------
-
-Find similar/competitor apps:
-
-.. code-block:: python
-
-   app_id = "com.whatsapp"
-   
-   # Get similar apps
-   similar = scraper.similar_analyze(app_id, count=20)
    for app in similar:
-       print(f"{app['title']} - {app['developer']}")
-   
-   # Get specific fields
-   titles = scraper.similar_get_field(app_id, "title", count=20)
-   
-   # Print methods
-   scraper.similar_print_all(app_id, count=20)
+       print(f"{app['title']} - {app['score']}/5")
 
-7. Suggest Methods
-------------------
+Get Top Charts
+^^^^^^^^^^^^^^
 
-Get search suggestions:
+Access top free, paid, or grossing apps:
 
 .. code-block:: python
 
-   term = "fitness"
+   # Top free games
+   top_free = scraper.list_analyze('TOP_FREE', 
+       category='GAME', 
+       count=100)
    
+   # Top paid apps
+   top_paid = scraper.list_analyze('TOP_PAID', 
+       category='APPLICATION', 
+       count=50)
+   
+   # Top grossing
+   top_grossing = scraper.list_analyze('TOP_GROSSING', count=100)
+
+Get Search Suggestions
+^^^^^^^^^^^^^^^^^^^^^^
+
+Get autocomplete suggestions:
+
+.. code-block:: python
+
    # Get suggestions
-   suggestions = scraper.suggest_analyze(term, count=10)
-   print(suggestions)  # ['fitness tracker', 'fitness app', ...]
+   suggestions = scraper.suggest_analyze('mine', count=10)
+   print(suggestions)
+   # ['minecraft', 'minesweeper', 'mineplex', ...]
+
+Multi-Language Support
+----------------------
+
+Get data in different languages:
+
+.. code-block:: python
+
+   # Spanish
+   app = scraper.app_analyze('com.whatsapp', lang='es')
    
-   # Get nested suggestions (suggestions for suggestions)
-   nested = scraper.suggest_nested(term, count=5)
+   # French
+   app = scraper.app_analyze('com.whatsapp', lang='fr')
    
-   # Print methods
-   scraper.suggest_print_all(term, count=10)
-   scraper.suggest_print_nested(term, count=5)
+   # Japanese
+   app = scraper.app_analyze('com.whatsapp', lang='ja')
 
-Method Parameters Reference
----------------------------
+Regional Data
+-------------
 
-App Methods
-~~~~~~~~~~~
+Get region-specific data:
 
-- ``app_id`` - Google Play app ID
-- ``field`` / ``fields`` - Field name(s) to retrieve
-- ``lang`` - Language code (default: "en")
-- ``country`` - Country code (default: "us")
+.. code-block:: python
 
-Search Methods
-~~~~~~~~~~~~~~
+   # UK data
+   app = scraper.app_analyze('com.whatsapp', country='gb')
+   
+   # Germany
+   app = scraper.app_analyze('com.whatsapp', country='de')
+   
+   # Japan
+   app = scraper.app_analyze('com.whatsapp', country='jp')
 
-- ``query`` - Search query string
-- ``field`` / ``fields`` - Field name(s) to retrieve
-- ``count`` - Number of results (default: 20)
-- ``lang`` - Language code (default: "en")
-- ``country`` - Country code (default: "us")
-
-Reviews Methods
-~~~~~~~~~~~~~~~
-
-- ``app_id`` - Google Play app ID
-- ``field`` / ``fields`` - Field name(s) to retrieve
-- ``count`` - Number of reviews (default: 100)
-- ``sort`` - Sort order: "NEWEST", "RELEVANT", "RATING"
-- ``lang`` - Language code (default: "en")
-- ``country`` - Country code (default: "us")
-
-Developer Methods
-~~~~~~~~~~~~~~~~~
-
-- ``dev_id`` - Developer ID (numeric or string)
-- ``field`` / ``fields`` - Field name(s) to retrieve
-- ``count`` - Number of apps (default: 50)
-- ``lang`` - Language code (default: "en")
-- ``country`` - Country code (default: "us")
-
-List Methods
-~~~~~~~~~~~~
-
-- ``collection`` - "TOP_FREE", "TOP_PAID", "TOP_GROSSING"
-- ``category`` - "GAME", "SOCIAL", "COMMUNICATION", etc.
-- ``field`` / ``fields`` - Field name(s) to retrieve
-- ``count`` - Number of apps (default: 50)
-- ``lang`` - Language code (default: "en")
-- ``country`` - Country code (default: "us")
-
-Similar Methods
-~~~~~~~~~~~~~~~
-
-- ``app_id`` - Google Play app ID
-- ``field`` / ``fields`` - Field name(s) to retrieve
-- ``count`` - Number of similar apps (default: 50)
-- ``lang`` - Language code (default: "en")
-- ``country`` - Country code (default: "us")
-
-Suggest Methods
-~~~~~~~~~~~~~~~
-
-- ``term`` - Search term for suggestions
-- ``count`` - Number of suggestions (default: 5)
-- ``lang`` - Language code (default: "en")
-- ``country`` - Country code (default: "us")
-
-Finding IDs
+Image Sizes
 -----------
 
-App Package Names
-~~~~~~~~~~~~~~~~~
+Control image quality:
 
-From Play Store URL:
+.. code-block:: python
 
-.. code-block:: text
+   # Small images (512px)
+   app = scraper.app_analyze('com.whatsapp', assets='SMALL')
+   
+   # Medium images (1024px) - default
+   app = scraper.app_analyze('com.whatsapp', assets='MEDIUM')
+   
+   # Large images (2048px)
+   app = scraper.app_analyze('com.whatsapp', assets='LARGE')
+   
+   # Original size
+   app = scraper.app_analyze('com.whatsapp', assets='ORIGINAL')
 
-   URL: https://play.google.com/store/apps/details?id=com.whatsapp
-   App ID: com.whatsapp
+Error Handling
+--------------
 
-Developer IDs
-~~~~~~~~~~~~~
+Handle errors gracefully:
 
-From developer page URL:
+.. code-block:: python
 
-.. code-block:: text
+   from gplay_scraper import GPlayScraper
+   from gplay_scraper.exceptions import (
+       AppNotFoundError,
+       InvalidAppIdError,
+       NetworkError
+   )
 
-   URL: https://play.google.com/store/apps/dev?id=5700313618786177705
-   Developer ID: 5700313618786177705
+   scraper = GPlayScraper()
+
+   try:
+       app = scraper.app_analyze('invalid.app.id')
+   except InvalidAppIdError:
+       print("Invalid app ID format")
+   except AppNotFoundError:
+       print("App not found on Play Store")
+   except NetworkError:
+       print("Network error occurred")
+
+Common Patterns
+---------------
+
+Batch Processing
+^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+   app_ids = ['com.whatsapp', 'com.telegram', 'com.signal']
+   
+   for app_id in app_ids:
+       app = scraper.app_analyze(app_id)
+       print(f"{app['title']}: {app['realInstalls']:,} installs")
+
+Market Research
+^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+   # Find highly-rated messaging apps
+   results = scraper.search_analyze('messaging', count=100)
+   high_rated = [app for app in results if app['score'] >= 4.5]
+   
+   for app in high_rated:
+       print(f"{app['title']}: {app['score']}/5")
+
+Competitor Analysis
+^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+   # Analyze your app vs competitors
+   my_app = scraper.app_analyze('com.myapp')
+   competitors = scraper.similar_analyze('com.myapp', count=10)
+   
+   print(f"My App: {my_app['score']}/5")
+   print("\nCompetitors:")
+   for comp in competitors:
+       print(f"  {comp['title']}: {comp['score']}/5")
+
+Review Monitoring
+^^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+   # Monitor negative reviews
+   reviews = scraper.reviews_analyze('com.myapp', 
+       count=100, 
+       sort='NEWEST')
+   
+   negative = [r for r in reviews if r['score'] <= 2]
+   
+   for review in negative:
+       print(f"{review['userName']}: {review['score']}/5")
+       print(f"  {review['content']}")
 
 Next Steps
 ----------
 
-- Check out :doc:`examples` for real-world use cases
-- Read the :doc:`api_reference` for detailed method documentation
-- Learn about :doc:`configuration` options
+* :doc:`examples` - See more detailed examples
+* :doc:`api/app` - Complete API reference
+* :doc:`configuration` - Advanced configuration options
+* :doc:`fields` - All available fields reference
